@@ -1,23 +1,23 @@
 
-POST https://hasitha-server.herokuapp.com/api/v1/login
-Content-Type: application/json
-
-{
-        "email": "kw@me.com",
-        "password": "123456"
-}
-
-# test
-# POST http://localhost:3000/api/v1/registerCustomer
+# POST https://hasitha-server.herokuapp.com/api/v1/login
 # Content-Type: application/json
 
 # {
-#         "first_name": "TestStudnet",
-#         "last_name": "Walpola",
-#         "email": "TetstStudent1234@gmail.com",
-#         "password": "123456",
-#         "mobile": "0771231231",
+#         "email": "kw@me.com",
+#         "password": "123456"
 # }
+
+# test
+POST http://localhost:3000/api/v1/register
+Content-Type: application/json
+
+{
+        "full_name": "Test",
+        "age": "30",
+        "email": "tp@me.com",
+        "password": "123456",
+        "mobile": "0771231231",
+}
 
 
 # GET http://localhost:3000/api/v1/post

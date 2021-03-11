@@ -3,7 +3,7 @@ const app = express();
 var cors = require('cors')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const authRoute = require('./routes/auth')
+const authRoute = require('./routes/route')
 
 
 //PORT 
@@ -18,13 +18,6 @@ mongoose.connect(process.env.DB_CONNECT,
     { useNewUrlParser: true }, () =>
     console.log('connected to DB')
 ); 
-
-
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
- 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use(express.json());
 app.use(cors())
 

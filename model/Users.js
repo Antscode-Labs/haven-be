@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 
-const customersSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
 
-    first_name: {
+    full_name: {
         type: String,
         required: true,
         min: 6,
         max: 255
     },
-    last_name: {
+    age: {
         type: String,
         required: true,
         min: 6,
@@ -35,4 +35,4 @@ const customersSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('customers', customersSchema)
+module.exports = mongoose.model('users', userSchema)
