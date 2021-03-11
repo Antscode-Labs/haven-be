@@ -15,8 +15,8 @@ exports.login = async (req, res, next) => {
         return res.status(400).send({ error: 'Invdalid Password' })
     }
 
-    const token = jwt.sign({ _id: userCheck._id }, process.env.TOKEN_SECRET)
-    res.header('auth-Token', token).send({ success: 'true', token: token, userId: userCheck._id, message: 'Login Successfull!' })
+    const token = jwt.sign({ _id: checedkUser._id }, process.env.TOKEN_SECRET)
+    res.header('auth-Token', token).send({ success: 'true', token: token, userId: checedkUser._id, message: 'Login Successfull!' })
 }
 
 
