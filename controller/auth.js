@@ -15,12 +15,32 @@ exports.login = async (req, res, next) => {
         return res.status(400).send({ error: 'Invdalid Password' })
     }
 
+    const userData = await Users.findOne({ email: req.body.email })
     const token = jwt.sign({ _id: checedkUser._id }, process.env.TOKEN_SECRET)
-    res.header('auth-Token', token).send({ success: 'true', token: token, userId: checedkUser._id, message: 'Login Successfull!' })
+    res.header('auth-Token', token).send({ success: 'true', token: token, user: userData, userId: checedkUser._id, message: 'Login Successfull!' })
+}
+
+exports.isFirstLogin = async (req, res, next) => {
+
+    const loggedUser = await Users.findOne({ email: req.body.email })
+
+    loggedUser.isFirstLogin = false;
+
+    try {
+        const editedLoggedUser = await loggedUser.save();
+
+        res.status(200).send({ success: 200, data: editedLoggedUser, message: 'User Edited Sucessfully' })
+    } catch (err) {
+        res.status(400).send({ status: 400, message: err })
+    }
+
+
 }
 
 
 exports.registerUser = async (req, res) => {
+
+    console.log(req, 'req')
 
     const checkedEmail = await Users.findOne({ email: req.body.email })
 
@@ -37,6 +57,7 @@ exports.registerUser = async (req, res) => {
         email: req.body.email,
         password: hashedPassword,
         mobile: req.body.mobile,
+        isFirstLogin : true,
     });
 
     try {
