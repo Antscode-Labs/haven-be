@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const Mood = require('../model/Mood')
 const Answers = require('../model/Answers')
 const Medication = require('../model/Medication')
+const Goal = require('../model/Goal')
 
 
 exports.addJournalEntry = async (req, res, next) => {
@@ -91,6 +92,8 @@ exports.saveMood = async (req, res, next) => {
 
     try {
         const savedMood = await entry.save();
+
+        console.log(savedMood)
 
         res.status(200).send({ success: 'true', savedMood, message: 'Mood Saved Sucessfully' })
     } catch (err) {
@@ -186,4 +189,40 @@ exports.getMedication = async (req, res) => {
     }
 
 }
+
+exports.addGoal = async (req, res) => {
+
+    console.log(req, 'req')
+
+    const post = new Goal({
+        entry: req.body.entry,
+        user: req.body.user,
+    });
+
+    console.log('here', post)
+
+    try {
+        const addPost = await post.save();
+
+        res.status(200).send({ success: 'true', addPost, message: 'Post Added Sucessfully' })
+    } catch (err) {
+        res.status(400).send({ status: 400, message: err })
+    }
+
+}
+
+exports.getGoals = async (req, res) => {
+
+    let entries = []
+    let entry = {}
+    entries = await Goal.find({ user: req.params.id })
+    // entries.push(entry)
+    try {
+        res.status(200).send({ success: 200, data : entries, message: 'Get Medication Sucessfull' })
+    } catch (err) {
+        res.status(400).send({ error: err })
+    }
+
+}
+
 

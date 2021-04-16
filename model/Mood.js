@@ -9,21 +9,21 @@ const moodSchema = new mongoose.Schema({
     },
     trigger:{
         type : String,
-        required: true,
+        //required: true,
         max : 1024,
-        min : 2
+        //min : 2
     },
     belief:{
         type : String,
-        required: true,
+        //required: true,
         max : 1024,
-        min : 2
+       // min : 2
     },
     newBelief:{
         type : String,
-        required: true,
+        //required: true,
         max : 1024,
-        min : 2
+       // min : 2
     },
     user :{
         type : String,

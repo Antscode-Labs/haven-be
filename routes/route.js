@@ -10,6 +10,8 @@ router.post('/isFirstLogin' , authController.isFirstLogin)
 router.post('/register', authController.registerUser)
 
 
+router.post('/addGoal', userController.addGoal)
+router.get('/getGoals/:id', userController.getGoals)
 router.post('/addMedication', userController.addMedication)
 router.get('/getMedication/:id', userController.getMedication)
 router.post('/addEntry', userController.addJournalEntry)
