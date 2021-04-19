@@ -8,6 +8,7 @@ const isAuth = require('../middleware/isAuth')
 router.post('/login' , authController.login)
 router.post('/isFirstLogin' , authController.isFirstLogin)
 router.post('/register', authController.registerUser)
+router.get('/getUser/:id', authController.getUser)
 
 
 router.post('/addGoal', userController.addGoal)

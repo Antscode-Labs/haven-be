@@ -69,3 +69,19 @@ exports.registerUser = async (req, res) => {
     }
 
 }
+
+exports.getUser = async (req, res) => {
+
+    //let entry = {}
+    //const userData = await Users.findOne({ _id: req.params.id })
+    let user = {}
+    user = await Users.findOne({ _id: req.params.id })
+    console.log('userData', user)
+    // entries.push(entry)
+    try {
+        res.status(200).send({ success: 200, user : user, message: 'Get User Sucessfull' })
+    } catch (err) {
+        res.status(400).send({ error: err })
+    }
+
+}
